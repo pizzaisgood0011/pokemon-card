@@ -1,0 +1,66 @@
+@if (isLoading()) {
+<div class="card-skeleton">
+    <div class="skeleton-image"></div>
+    <div class="skeleton-text"></div>
+    <div class="skeleton-text"></div>
+</div>
+} @else if (pokemon()) {
+<div class="card-wrapper" [class.flipped]="isFlipped()" [style.--glow-color]="glowColor()" (click)="flip()">
+
+    <div class="card-inner">
+
+        <!-- FRONT CARD-->
+        <div class="card-face card-front">
+            <div class="card-id">#{{ pokemon()!.id }}</div>
+
+            <img class="card-image" [src]="pokemon()!.sprites.other['official-artwork'].front_default"
+                [alt]="pokemon()!.name" />
+
+            <h3 class="card-name">{{ pokemon()!.name }}</h3>
+            <div class="card-divider"></div>
+            <div class="card-types">
+                @for (typeSlot of pokemon()!.types; track typeSlot.slot) {
+                <span class="type-badge" [style.background-color]="typeColors[typeSlot.type.name]">
+                    {{ typeSlot.type.name }}
+                </span>
+                }
+            </div>
+
+            <div class="card-hint">Click to flip</div>
+        </div>
+
+        <!-- BACK CARD -->
+        <div class="card-face card-back">
+            <h3 class="card-name">{{ pokemon()!.name }}</h3>
+
+            <div class="card-stats">
+                @for (statSlot of pokemon()!.stats; track statSlot.stat.name) {
+                <div class="stat-row">
+                    <span class="stat-name">{{ statSlot.stat.name }}</span>
+                    <div class="stat-bar-wrapper">
+                        <div class="stat-bar" [style.width.%]="(statSlot.base_stat / 255) * 100"
+                            [style.background-color]="glowColor()">
+                        </div>
+                    </div>
+                    <span class="stat-value">{{ statSlot.base_stat }}</span>
+                </div>
+                }
+            </div>
+
+            <div class="card-abilities">
+                @for (abilitySlot of pokemon()!.abilities; track abilitySlot.slot) {
+                <span class="ability-badge" [class.hidden]="abilitySlot.is_hidden">
+                    {{ abilitySlot.ability.name }}
+                    @if (abilitySlot.is_hidden) { <small>(hidden)</small> }
+                </span>
+                }
+            </div>
+
+            <button class="detail-btn" (click)="$event.stopPropagation(); goToDetail()">
+                View Full Detail
+            </button>
+        </div>
+
+    </div>
+</div>
+}

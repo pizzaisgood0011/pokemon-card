@@ -1,0 +1,43 @@
+<section class="home">
+
+    <div class="home-header">
+        <h1 class="home-title">Pokédex</h1>
+        <p class="home-subtitle">Card Collection</p>
+    </div>
+
+    <!-- Search -->
+    <div class="search-wrapper">
+        <input class="search-input" type="text" placeholder="Search Pokémon..." [value]="searchQuery()"
+            (input)="onSearch($event)" />
+        @if (searchQuery() || selectedType()) {
+        <button class="clear-btn" (click)="clearFilters()">✕ Clear</button>
+        }
+    </div>
+
+    <!-- Type Filter -->
+    @if (isLoadingTypes()) {
+    <div class="types-loading">Loading types...</div>
+    } @else {
+    <div class="type-filters">
+        @for (type of types(); track type.name) {
+        <button class="type-btn" [class.active]="selectedType() === type.name" (click)="onTypeSelect(type.name)">
+            {{ type.name }}
+        </button>
+        }
+    </div>
+    }
+
+    <!-- Grid -->
+    @if (isLoadingPokemon() || isLoadingByType()) {
+    <p class="loading-text">Loading Pokémon...</p>
+    } @else if (filteredPokemon().length === 0) {
+    <p class="loading-text">No Pokémon found...</p>
+    } @else {
+    <div class="pokemon-grid">
+        @for (item of filteredPokemon(); track item.name) {
+        <app-pokemon-card [pokemonItem]="item" />
+        }
+    </div>
+    }
+
+</section>

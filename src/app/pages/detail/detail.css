@@ -1,0 +1,346 @@
+.detail {
+    min-height: 100vh;
+    background: #f9f9f9;
+    padding: 32px 24px;
+    font-family: 'Nunito', sans-serif;
+}
+
+/*  Back Button  */
+.back-btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border: 3px solid #212121;
+    border-radius: 30px;
+    background: #FFD700;
+    color: #212121;
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px #212121;
+    transition: transform 0.1s, box-shadow 0.1s;
+    margin-bottom: 32px;
+    letter-spacing: 1px;
+}
+
+.back-btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #212121;
+}
+
+/*  Card  */
+.detail-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border: 3px solid #212121;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 6px 6px 0px #212121;
+}
+
+/*  Left  */
+.detail-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.detail-id {
+    font-size: 14px;
+    font-weight: 900;
+    color: #bbb;
+    letter-spacing: 2px;
+    align-self: flex-start;
+}
+
+/*  Artwork  */
+.artwork-wrapper {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--glow-color) 15%, #f9f9f9);
+    border: 3px solid #212121;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 4px 4px 0px #212121;
+}
+
+.detail-image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 16px color-mix(in srgb, var(--glow-color) 60%, transparent));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/*  Name  */
+.detail-name {
+    font-size: 28px;
+    font-weight: 900;
+    color: #212121;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    margin: 0;
+    text-align: center;
+}
+
+/*  Types  */
+.detail-types {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.type-badge {
+    font-size: 11px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 16px;
+    border-radius: 20px;
+    color: #fff;
+    border: 2px solid #212121;
+    box-shadow: 2px 2px 0px #212121;
+}
+
+/*  Info Pills  */
+.detail-info {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.info-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f9f9f9;
+    border: 2px solid #212121;
+    border-radius: 12px;
+    padding: 10px 16px;
+    box-shadow: 2px 2px 0px #212121;
+    flex: 1;
+    min-width: 70px;
+}
+
+.info-label {
+    font-size: 10px;
+    font-weight: 900;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-value {
+    font-size: 16px;
+    font-weight: 900;
+    color: #212121;
+    margin-top: 2px;
+}
+
+/*  Right  */
+.detail-right {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 900;
+    color: #212121;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #FFD700;
+    margin-bottom: 4px;
+    margin-top: 16px;
+}
+
+.section-title:first-child {
+    margin-top: 0;
+}
+
+/*  Stats  */
+.stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stat-row {
+    display: grid;
+    grid-template-columns: 120px 40px 1fr;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-name {
+    font-size: 12px;
+    font-weight: 800;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stat-value {
+    font-size: 13px;
+    font-weight: 900;
+    color: #212121;
+    text-align: right;
+}
+
+.stat-bar-wrapper {
+    height: 10px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #e0e0e0;
+}
+
+.stat-bar {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*  Abilities  */
+.abilities-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ability-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: #FFD700;
+    border: 2px solid #212121;
+    border-radius: 12px;
+    box-shadow: 2px 2px 0px #212121;
+}
+
+.ability-item.hidden-ability {
+    background: #f0f0f0;
+    box-shadow: none;
+    border-color: #ddd;
+}
+
+.ability-name {
+    font-size: 13px;
+    font-weight: 900;
+    color: #212121;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.hidden-tag {
+    font-size: 10px;
+    font-weight: 900;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1.5px dashed #ccc;
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+/*  Loading  */
+.detail-loading {
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    color: #212121;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-top: 120px;
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/*  Responsive  */
+@media (max-width: 768px) {
+    .detail-card {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 24px;
+    }
+
+    .artwork-wrapper {
+        width: 200px;
+        height: 200px;
+    }
+
+    .detail-image {
+        width: 160px;
+        height: 160px;
+    }
+
+    .stat-row {
+        grid-template-columns: 100px 36px 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .detail {
+        padding: 20px 16px;
+    }
+
+    .detail-name {
+        font-size: 22px;
+    }
+
+    .artwork-wrapper {
+        width: 170px;
+        height: 170px;
+    }
+
+    .detail-image {
+        width: 130px;
+        height: 130px;
+    }
+
+    .stat-row {
+        grid-template-columns: 85px 30px 1fr;
+    }
+}

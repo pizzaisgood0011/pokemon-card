@@ -1,0 +1,77 @@
+<section class="detail" [style.--glow-color]="glowColor()">
+
+    <button class="back-btn" (click)="goBack()">← Back</button>
+
+    @if (isLoading()) {
+    <div class="detail-loading">Loading Pokémon...</div>
+    } @else if (pokemon()) {
+
+    <div class="detail-card">
+
+        <!-- LEFT — artwork -->
+        <div class="detail-left">
+            <div class="detail-id">#{{ pokemon()!.id }}</div>
+            <div class="artwork-wrapper">
+                <img class="detail-image" [src]="pokemon()!.sprites.other['official-artwork'].front_default"
+                    [alt]="pokemon()!.name" />
+            </div>
+            <h1 class="detail-name">{{ pokemon()!.name }}</h1>
+            <div class="detail-types">
+                @for (typeSlot of pokemon()!.types; track typeSlot.slot) {
+                <span class="type-badge" [style.background-color]="typeColors[typeSlot.type.name]">
+                    {{ typeSlot.type.name }}
+                </span>
+                }
+            </div>
+
+            <!-- Info pills -->
+            <div class="detail-info">
+                <div class="info-pill">
+                    <span class="info-label">Height</span>
+                    <span class="info-value">{{ pokemon()!.height / 10 }}m</span>
+                </div>
+                <div class="info-pill">
+                    <span class="info-label">Weight</span>
+                    <span class="info-value">{{ pokemon()!.weight / 10 }}kg</span>
+                </div>
+                <div class="info-pill">
+                    <span class="info-label">Base EXP</span>
+                    <span class="info-value">{{ pokemon()!.base_experience }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT — stats + abilities -->
+        <div class="detail-right">
+
+            <div class="section-title">Base Stats</div>
+            <div class="stats-list">
+                @for (statSlot of pokemon()!.stats; track statSlot.stat.name) {
+                <div class="stat-row">
+                    <span class="stat-name">{{ statSlot.stat.name }}</span>
+                    <span class="stat-value">{{ statSlot.base_stat }}</span>
+                    <div class="stat-bar-wrapper">
+                        <div class="stat-bar" [style.width.%]="(statSlot.base_stat / 255) * 100"
+                            [style.background-color]="glowColor()"></div>
+                    </div>
+                </div>
+                }
+            </div>
+
+            <div class="section-title">Abilities</div>
+            <div class="abilities-list">
+                @for (abilitySlot of pokemon()!.abilities; track abilitySlot.slot) {
+                <div class="ability-item" [class.hidden-ability]="abilitySlot.is_hidden">
+                    <span class="ability-name">{{ abilitySlot.ability.name }}</span>
+                    @if (abilitySlot.is_hidden) {
+                    <span class="hidden-tag">Hidden</span>
+                    }
+                </div>
+                }
+            </div>
+
+        </div>
+    </div>
+    }
+
+</section>
